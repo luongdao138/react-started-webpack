@@ -1,6 +1,6 @@
 module.exports = {
-  mode: "production",
-  devtool: "source-map",
+  mode: 'production',
+  devtool: 'source-map',
 
   // TODO: @luongdao temporary bypass performance problem
   performance: {

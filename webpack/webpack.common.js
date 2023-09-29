@@ -1,24 +1,24 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const DotenvPlugin = require("dotenv-webpack");
-const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DotenvPlugin = require('dotenv-webpack');
+const path = require('path');
 
-module.exports = ({ env }) => {
-  const isDev = env === "development";
+module.exports = ({env}) => {
+  const isDev = env === 'development';
 
   return {
     // entry: specify the entry point where webpack starts to bundle
-    entry: path.resolve(__dirname, "../src/main.tsx"),
+    entry: path.resolve(__dirname, '../src/main.tsx'),
 
     // resolve: leave off the extension when import modules, for example: instead of import App from './App.tsx', we just need import App from './App'
     // with this example: webpack will try to resolve .tsx extenstion first, and then .ts and finally .js
     resolve: {
-      extensions: [".tsx", ".ts", ".js"],
+      extensions: ['.tsx', '.ts', '.js'],
     },
 
     // output: tell webpack the place to bunble the code to
     output: {
-      path: path.resolve(__dirname, "../build"),
-      filename: "[name]~[contenthash].bundle.js",
+      path: path.resolve(__dirname, '../build'),
+      filename: '[name]~[contenthash].bundle.js',
       clean: true,
     },
 
@@ -35,9 +35,9 @@ module.exports = ({ env }) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "babel-loader",
+              loader: 'babel-loader',
               options: {
-                plugins: [isDev && "react-refresh/babel"].filter(Boolean),
+                plugins: [isDev && 'react-refresh/babel'].filter(Boolean),
               },
             },
           ],
@@ -47,10 +47,10 @@ module.exports = ({ env }) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "style-loader",
+              loader: 'style-loader',
             },
             {
-              loader: "css-loader",
+              loader: 'css-loader',
             },
           ],
         },
@@ -59,23 +59,23 @@ module.exports = ({ env }) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "style-loader",
+              loader: 'style-loader',
             },
             {
-              loader: "css-loader",
+              loader: 'css-loader',
             },
             {
-              loader: "sass-loader",
+              loader: 'sass-loader',
             },
           ],
         },
         {
           test: /\.(?:ico|gif|png|jpg|jpeg|webp|avif)$/i,
-          type: "asset/resource",
+          type: 'asset/resource',
         },
         {
           test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
-          type: "asset/inline",
+          type: 'asset/inline',
         },
       ],
     },
@@ -84,8 +84,8 @@ module.exports = ({ env }) => {
     plugins: [
       // this plugin auto generates html file from a template and auto import script tags, stylesheet tags, ....
       new HtmlWebpackPlugin({
-        filename: "index.html",
-        template: path.resolve(__dirname, "../public/index.html"),
+        filename: 'index.html',
+        template: path.resolve(__dirname, '../public/index.html'),
         inject: true,
         hash: true,
       }),
