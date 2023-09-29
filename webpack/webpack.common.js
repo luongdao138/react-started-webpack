@@ -20,6 +20,7 @@ module.exports = ({env}) => {
       path: path.resolve(__dirname, '../build'),
       filename: '[name]~[contenthash].bundle.js',
       clean: true,
+      publicPath: '/',
     },
 
     // mode: tell webpack in which environment it will bundle the code, development or production
@@ -91,7 +92,10 @@ module.exports = ({env}) => {
       }),
 
       // this plugins support loading env variables from file
-      new DotenvPlugin({}),
+      new DotenvPlugin({
+        systemvars: true,
+        defaults: '.env.example',
+      }),
     ],
 
     // dev server, allow us to config which port dev server is running on, hot reload or not,...
@@ -100,5 +104,12 @@ module.exports = ({env}) => {
     //   port,
     //   hot: true,
     // },
+    devServer: {
+      // this will set the public path to public folder
+      // e.g you can import path like /assets/avatar.jpeg
+      static: {
+        directory: path.join(__dirname, '../public'),
+      },
+    },
   };
 };
