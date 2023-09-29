@@ -1,6 +1,6 @@
-import myAvatar from "./assets/images/avatar.jpeg";
-import reactLogo from "./assets/icons/react-logo.svg";
-import Counter from "./components/Counter";
+import myAvatar from './assets/images/avatar.jpeg';
+import reactLogo from './assets/icons/react-logo.svg';
+import Counter from './components/Counter';
 
 const App = () => {
   return (
